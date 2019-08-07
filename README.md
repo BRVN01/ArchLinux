@@ -1,6 +1,6 @@
 # Arquivos
 
-Todo arquivo em MD (MarkDown) foi escrito usando o editor typora, que interpreta tags html, com isso, o GitHub vai exibir essas tags por não identificá-la, mantenho esse arquivo em caso do conteúdo ter que ser editado. Apesar do arquivo em MarkDown, deixo um arquivo em html que fica melhor para o ler o conteúdo.
+Todo arquivo em MD (MarkDown) foi escrito usando o editor typora, que interpreta tags html, com isso, o GitHub vai exibir essas tags por não identificá-la, mantenho esse arquivo em caso do conteúdo ter que ser editado. Apesar do arquivo em MD, deixo um arquivo em html que fica melhor para o ler o conteúdo.
 
 # Assunto
 
