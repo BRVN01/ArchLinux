@@ -26,6 +26,22 @@ Se você tem dúvidas sobre tabelas GPT e MBR, ou o que é uma tabela de partiç
 
 
 
+#### <span style="color:#d86c00">O problema do GPT na BIOS</span>
+
+Diferente de uma tabela MBR que foi desenvolvida para trabalhar com BIOS, o GPT foi desenvolvido para trabalhar com UEFI e, por natureza, a BIOS não reconhece o cabeçalho GPT. Por esse motivo, quando uma tabela GPT é criada, o primeiro setor do disco recebe a PMBR (Protective Master Boot Record), criando uma compatibilidade entre BIOS e GPT.
+
+Logo após a PMBR, temos os cabeçalhos iniciais do GPT (setor 0). Isso é um "problema" porque como o bootloader inicial está na PMBR, os próximos setores depois dele deveriam estar vazios (setor 1 até 62). Esses setores seriam usados para armazenar a imagem principal do grub que iria acessar /boot/grub, e iniciar a chamada ao Sistema (sem entrar em detalhes, começar a iniciar o S.O). Esse espaço vazio é estritamente pequeno e serve para armazenar a imagem principal do grub (core.img).
+
+Como a GPT inicia seus cabeçalhos (setor 1 até 33) logo após a PMBR (setor 1), depois dos cabeçalhos GPT já teremos as partições do HD (teríamos que ter um espaço vazio para o core.img), com isso, não sobra espaço para armazenar a imagem principal do grub, muito menos para ela ser inicializada, na verdade.
+
+
+
+#### A solução
+
+Devemos criar uma partição no inicio do disco (sda1 para sistemas baseado em Unix). Essa partição fica logo após o setor 33, sendo o setor 34 do disco. A imagem pesa cerca de 32KiB, e a  recomendação é que seja usado uma partição de 1MiB, mas por via das dúvidas, crie uma partição de 1 GB para armazenar.
+
+
+
 #### <span style="color:#d86c00">Após logar no Arch</span>
 
 Configure o teclado para o padrão ABNT2, caso esteja usando um teclado que tenha cedilha.
@@ -78,7 +94,7 @@ parted /dev/sda mklabel gpt
 # Criando uma tabela de partição do tipo GPT.
 ```
 
-Se você rodar o comando `fdisk -l /dev/sda | grep "Disklabel type"` você verá que o `Disklabel type` está como `dos`.
+Se você rodar o comando `fdisk -l /dev/sda | grep "Disklabel type"` você verá que o `Disklabel type` está como `gpt`.
 
 
 
@@ -86,47 +102,34 @@ Agora vamos criar a partição do `/boot`, eu sempre deixo o `/boot` como `sda`,
 
 
 
-<span style="color:red">Observação:</span> Diferente de uma tabela MBR que foi desenvolvida para trabalhar com BIOS, o GPT foi desenvolvido para trabalhar com UEFI e por natureza a BIOS não reconhece o cabeçalho GPT, por esse motivo, quando uma tabela GPT é criada, o primeiro setor do disco recebe a PMBR (Protective Master Boot Record) criando uma compatibilidade entre BIOS e GPT.
-
-Quando a BIOS identifica a PMBR, ela é inicializada e todo processo ocorre normalmente (caso esteja tudo certo com o Sistema e o Hardware). O problema é que, usando MBR o setor 0 do disco fica ocupado pela MBR, o setor 1 até o setor 2047 é usado para locação do bootloader
-
-
-
 Criando a partição do GRUB:
 
 ```bash
 echo -e "n\n1\n\n+1G\nt\n21686148-6449-6E6F-744E-656564454649\nw" | fdisk /dev/sda
-
-
 ```
 
 
 
-Criando o /boot:
+Criando a partição do boot:
 
 ```bash
 echo -e "n\n2\n\n+5G\ny\nt\n2\n21686148-6449-6E6F-744E-656564454649\nw" | fdisk /dev/sda
-
 ```
 
 
 
-Criando a swap:
+Criando a partição da swap:
 
 ```bash
 echo -e "n\n3\n\n+5G\ny\nt\n3\n0657FD6D-A4AB-43C4-84E5-0933C84B4F4F\nw" | fdisk /dev/sda
-
-
 ```
 
 
 
-Criando a /home:
+Criando a partição do home:
 
 ```bash
 echo -e "n\n4\n\n+5G\ny\nt\n4\n933AC7E1-2EB4-4F13-B844-0E14E2AEF915\nw" | fdisk /dev/sda
-
-
 ```
 
 
@@ -136,8 +139,6 @@ Criando a raiz do sistema:
 ```bash
 echo -e "n\n5\n\n\ny\nt\n5\n4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709\nw" | fdisk /dev/sda
 ```
-
-
 
 
 
@@ -333,6 +334,7 @@ pacstrap /mnt base base-devel
 # base = Base do linux que será instalado.
 
 # base-devel = Programas mais voltado para desenvolvedores, aqui temos compiladores, compactadores, bibliotecas do GNU e alguns programas como: sed, grep, sudo, systemd entre outros pacotes.
+
 ```
 
 Esse grupo não inclui todas as ferramentas da instalação *live*, tal como [btrfs-progs](https://www.archlinux.org/packages/?name=btrfs-progs) ou firmware de rede sem fio específico.
@@ -348,6 +350,7 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
 
 # -p = Excluir montagens do pseudofs (comportamento padrão)
 # -U = Define as partições/discos por seus UUID e não por Label (Nomes).
+
 ```
 
 
@@ -370,6 +373,7 @@ Para isso digite o comando abaixo:
 arch-chroot /mnt /bin/bash
 
 # /bin/bash informa qual shell queremos usar ao trocar a raiz.
+
 ```
 
 
@@ -380,6 +384,7 @@ Para isso temos algumas formas de se fazer, vamos configurar o link simbólico c
 
 ```bash
 ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
+
 ```
 
 
@@ -388,6 +393,7 @@ Agora vamos atualizar a hora da BIOS para que ela tenha o mesmo horário que nos
 
 ```bash
 hwclock --systohc
+
 ```
 
 
@@ -396,6 +402,7 @@ hwclock --systohc
 
 ```bash
 pacman -Syy vim
+
 ```
 
 
@@ -408,6 +415,7 @@ Edite o arquivo abaixo para escolher o idioma do sistema, no nosso caso, o idiom
 sed -i 's/#pt_BR.UTF-8 UTF-8/pt_BR.UTF-8 UTF-8/' /etc/locale.gen
 
 # Esse comando descomenta a linha '#pt_BR.UTF-8 UTF-8'
+
 ```
 
 Gere as variáveis de localidade usando o comando `locale-gen`.
@@ -418,6 +426,7 @@ Crie o arquivo `locale.conf` dentro de `/etc/` para definir a variável `LANG` a
 
 ```bash
 echo "LANG=pt_BR.UTF-8" > /etc/locale.conf
+
 ```
 
 
@@ -426,6 +435,7 @@ echo "LANG=pt_BR.UTF-8" > /etc/locale.conf
 
 ```bash
 echo "KEYMAP=br-abnt2" > /etc/vconsole.conf
+
 ```
 
 
@@ -444,6 +454,7 @@ Edite o arquivo `vim /etc/hosts`
 127.0.0.1	localhost.localdomain	localhost
 ::1			localhost.localdomain	localhost
 127.0.1.1	NomeDaMaquina.localdomain	NomeDaMaquina
+
 ```
 
 
@@ -454,6 +465,7 @@ Vamos instalar os pacotes necessários para configurar o WIFI:
 
 ```bash
 pacman -S wireless_tools wpa_supplicant wpa_actiond dialog
+
 ```
 
 
@@ -464,6 +476,7 @@ Use o comando abaixo para trocar a senha do root, coloque uma senha forte.
 
 ```bash
 passwd
+
 ```
 
 
@@ -480,6 +493,7 @@ sed -i '94,95 s/^#//' /etc/pacman.conf
 
 [multilib]
 Include = /etc/pacman.d/mirrorlist
+
 ```
 
 Agora atualize o sistema com o comando `pacman -Syu` e `pacman -Syy`.
@@ -496,6 +510,7 @@ pacman -S grub
 
 # Para instalar o os-prober execute o comando abaixo:
 pacman -S os-prober
+
 ```
 
 
@@ -510,6 +525,7 @@ grub-install /dev/sda
 
 grub-mkconfig -o /boot/grub/grub.cfg
 # Exportando a configuração do grub para um arquivo que será lido no momento da inicialização.
+
 ```
 
 
@@ -520,6 +536,7 @@ Caso esteja usando um notebook, instale os pacotes `acpi` e `acpid` para control
 
 ```bash
 pacman -S acpi acpid
+
 ```
 
 
