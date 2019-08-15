@@ -2,7 +2,7 @@
 
 - [Introdução](#Introdução)
 - [O problema do GPT na BIOS](#O problema do GPT na BIOS)
-	- [A solução](#A\ solução)
+	- [A solução](#A_solução)
 - [Após logar no Arch](#Após logar no Arch)
 - [Particionando o disco](#Particionando o disco)
 - [Criando uma tabela de partição do tipo GPT](#Criando uma tabela de partição do tipo GPT)
@@ -61,7 +61,7 @@ Como a GPT inicia seus cabeçalhos (setor 1 até 33) logo após a PMBR (setor 1)
 
 
 
-#### A solução
+#### A_solução
 
 Devemos criar uma partição no inicio do disco (sda1 para sistemas baseado em Unix). Essa partição fica logo após o setor 33, sendo o setor 34 do disco. A imagem pesa cerca de 32KiB, e a  recomendação é que seja usado uma partição de 1MiB, mas por via das dúvidas, crie uma partição de 1 GB para armazenar.
 
