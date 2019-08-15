@@ -1,6 +1,30 @@
 # **Arch Linux Installation Guide - BIOS/GPT Mode**
 
 - [Introdução](#Introdução)
+- [O problema do GPT na BIOS](#O problema do GPT na BIOS)
+	- [A solução](#A solução)
+- [Após logar no Arch](#Após logar no Arch)
+- [Particionando o disco](#Particionando o disco)
+- [Criando uma tabela de partição do tipo GPT](#Criando uma tabela de partição do tipo GPT)
+- [Formatar as partições](#Formatar as partições)
+- [Instalação](#Instalação)
+	- [Configurar o sistema](#Configurar o sistema)
+	- [Mudando a raiz do sistema](#Mudando a raiz do sistema)
+	- [Configurando o Relógio](#Configurando o Relógio)
+	- [Instalando o vim](#Instalando o vim)
+	- [Definir idioma no S.O. do Arch](#Definir idioma no S.O. do Arch)
+	- [Tornando o layout do teclado permanente](#Tornando o layout do teclado permanente)
+	- [Configurando nome da máquina](#Configurando nome da máquina)
+	- [Configurando o arquivo HOSTS](#Configurando o arquivo HOSTS)
+	- [Configurando WIFI - Caso tenha um adaptador WIFI](#Configurando WIFI - Caso tenha um adaptador WIFI)
+	- [Configurar senha do ROOT](#Configurar senha do ROOT)
+	- [Instalando a multilib](#Instalando a multilib)
+	- [Instalando o GRUB](#Instalando o GRUB)
+	- [Configurando o GRUB](#Configurando o GRUB)
+	- [ACPI/ACPID para NOTEBOOKS](#ACPI/ACPID para NOTEBOOKS)
+	- [Mudando a raiz do sistema](#Mudando a raiz do sistema)
+- [Desmontando nosso Sistema](#Desmontando nosso Sistema)
+- [Reiniciando a máquina](#Reiniciando a máquina)
 
 
 #### Introdução
