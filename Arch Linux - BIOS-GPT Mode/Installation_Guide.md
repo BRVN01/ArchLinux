@@ -2,14 +2,14 @@
 
 - [Introdução](#Introdução)
 - [O problema do GPT na BIOS](#O_Problema_do_GPT_na_BIOS)
-	- [A solução](#A solução)
-- [Após logar no Arch](#Após logar no Arch)
-- [Particionando o disco](#Particionando o disco)
-- [Criando uma tabela de partição do tipo GPT](#Criando uma tabela de partição do tipo GPT)
-- [Formatar as partições](#Formatar as partições)
+	- [A solução](#A_solução)
+- [Após logar no Arch](#Após_logar_no_Arch)
+- [Particionando o disco](#Particionando_o_disco)
+- [Criando uma tabela de partição do tipo GPT](#Criando_uma_tabela_de_partição_do_tipo_GPT)
+- [Formatar as partições](#Formatar_as_partições)
 - [Instalação](#Instalação)
-	- [Configurar o sistema](#Configurar o sistema)
-	- [Mudando a raiz do sistema](#Mudando a raiz do sistema)
+	- [Configurar o sistema](#Configurar_o_sistema)
+	- [Mudando a raiz do sistema](#Mudando_a_raiz_do_sistema)
 	- [Configurando o Relógio](#Configurando o Relógio)
 	- [Instalando o vim](#Instalando o vim)
 	- [Definir idioma no S.O. do Arch](#Definir idioma no S.O. do Arch)
@@ -22,7 +22,7 @@
 	- [Instalando o GRUB](#Instalando o GRUB)
 	- [Configurando o GRUB](#Configurando o GRUB)
 	- [ACPI/ACPID para NOTEBOOKS](#ACPI/ACPID para NOTEBOOKS)
-	- [Mudando a raiz do sistema](#Mudando a raiz do sistema)
+	- [Mudando a raiz do sistema](##Mudando_a_raiz_do_sistema)
 - [Desmontando nosso Sistema](#Desmontando nosso Sistema)
 - [Reiniciando a máquina](#Reiniciando a máquina)
 
@@ -67,7 +67,7 @@ Devemos criar uma partição no inicio do disco (sda1 para sistemas baseado em U
 
 
 
-#### Após logar no Arch
+#### Após_logar_no_Arch
 
 Configure o teclado para o padrão ABNT2, caso esteja usando um teclado que tenha cedilha.
 
@@ -77,7 +77,7 @@ loadkeys br-abnt2
 
 
 
-#### Particionando o disco
+#### Particionando_o_disco
 
 Vamos particionar o disco para que ele receba nosso Sistema Operacional.
 Eu vou colocar o `/home` e `/boot` numa partição separada.
@@ -284,7 +284,7 @@ A tabela abaixo representa os códigos suportados pelo `fdisk` para tabelas *GPT
 
 
 
-#### Formatar as partições
+#### Formatar_as_partições
 
 Vamos formatar as partições com o *FS* para que elas recebam os dados adequado de cada partição.
 
@@ -375,7 +375,7 @@ Esse grupo não inclui todas as ferramentas da instalação *live*, tal como [bt
 
 
 
-#### Configurar o sistema
+#### Configurar_o_sistema
 
 Gerar o arquivo fstab com os discos montados, isso permite que sempre que o sistema inicializar, ele monte as partições/discos.
 
@@ -390,7 +390,7 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
 
 
 
-#### Mudando a raiz do sistema
+#### Mudando_a_raiz_do_sistema
 
 Vamos mudar a raiz do sistema, quando fizermos isso, é como trocar o Sistema Operacional, com isso, todo comando digitado após mudar a raiz terá efeito no sistemas em que estivermos e não mais no antigo.
 
