@@ -1,8 +1,8 @@
-# <span style="color:#d86c00">**Arch Linux Installation Guide - BIOS/DOS Mode**</span>
+# **Arch Linux Installation Guide - BIOS/DOS Mode**
 
-[TOC]
 
-#### <span style="color:#d86c00">Introdução</span>
+
+#### Introdução
 
 Atualmente muitos computadores já vem de fábrica com o suporte a BIOS e UEFI, a maioria das placas identifica o uso da BIOS como `BIOS legacy`, ou seja, BIOS legada, que vai deixar de existir. Para uso da BIOS em placas com UEFI, você deve selecionar o tipo de BIOS, entrando na configuração dela, algumas até mesmo exigem que seja desativado o `BIOS Secure Boot`.
 
@@ -24,7 +24,7 @@ Se você tem dúvidas sobre GPT/DOS ou o que é uma tabela de partição, tipos 
 
 
 
-#### <span style="color:#d86c00">Após logar no Arch</span>
+#### Após logar no Arch
 
 Configure o teclado para o padrão ABNT2, caso esteja usando um teclado que tenha cedilha.
 
@@ -34,7 +34,7 @@ loadkeys br-abnt2
 
 
 
-#### <span style="color:#d86c00">Particionando o disco</span>
+#### Particionando o disco
 
 Vamos particionar o disco para que ele receba nosso Sistema Operacional.
 Eu vou colocar o `/home` e `/boot` numa partição separada.
@@ -53,7 +53,7 @@ swap		Diretório de Troca				82: Linux swap
 
 Meu HD não possui nenhuma tabela de partição, portanto precisamos criar uma, caso o seu HD já tenha, certifique-se de que a tabela de partição seja do tipo DOS.
 
-<span style="color:red">Esse procedimento irá destruir todos os dados de seu HD, recomendo que você faça backup do HD.</span>
+<span style="color:red">Esse procedimento irá destruir todos os dados de seu HD, recomendo que você faça backup do HD.
 
 
 
@@ -322,7 +322,7 @@ mount /dev/sda1 /mnt/boot
 
 
 
-#### <span style="color:#d86c00">Instalação</span>
+#### Instalação
 
 Usando o script `pacstrap`, vamos instalar um grupo de pacote base para o funcionamento do sistema:
 
@@ -339,7 +339,7 @@ Esse grupo não inclui todas as ferramentas da instalação *live*, tal como [bt
 
 
 
-#### <span style="color:#d86c00">Configurar o sistema</span>
+#### Configurar o sistema
 
 Gerar o arquivo fstab com os discos montados, isso permite que sempre que o sistema inicializar, ele monte as partições/discos.
 
@@ -353,7 +353,7 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
 
 
 
-#### <span style="color:#d86c00">Mudando a raiz do sistema</span>
+#### Mudando a raiz do sistema
 
 Vamos mudar a raiz do sistema, quando fizermos isso, é como trocar o Sistema Operacional, com isso, todo comando digitado após mudar a raiz terá efeito no sistemas em que estivermos e não mais no antigo.
 
@@ -376,7 +376,7 @@ arch-chroot /mnt /bin/bash
 
 
 
-#### <span style="color:#d86c00">Configurando o Relógio</span>
+#### Configurando o Relógio
 
 Para isso temos algumas formas de se fazer, vamos configurar o link simbólico contendo as configurações da nossa localidade:
 
@@ -396,7 +396,7 @@ hwclock --systohc
 
 
 
-#### <span style="color:#d86c00">Instalando o vim</span>
+#### Instalando o vim
 
 ```bash
 pacman -Syy vim
@@ -405,7 +405,7 @@ pacman -Syy vim
 
 
 
-#### <span style="color:#d86c00">Definir idioma no S.O. do Arch</span>
+#### Definir idioma no S.O. do Arch
 
 Edite o arquivo abaixo para escolher o idioma do sistema, no nosso caso, o idioma Português Brasileiro:
 
@@ -429,7 +429,7 @@ echo "LANG=pt_BR.UTF-8" > /etc/locale.conf
 
 
 
-#### <span style="color:#d86c00">Tornando o layout do teclado permanente</span>
+#### Tornando o layout do teclado permanente
 
 ```bash
 echo "KEYMAP=br-abnt2" > /etc/vconsole.conf
@@ -438,13 +438,13 @@ echo "KEYMAP=br-abnt2" > /etc/vconsole.conf
 
 
 
-#### <span style="color:#d86c00">Configurando nome da máquina</span>
+#### Configurando nome da máquina
 
 Edite o arquivo `echo "NomeDaMaquina" > /etc/hostname` adicionando o nome escolhido.
 
 
 
-#### <span style="color:#d86c00">Configurando o arquivo HOSTS</span>
+#### Configurando o arquivo HOSTS
 
 Edite o arquivo `vim /etc/hosts` 
 
@@ -457,7 +457,7 @@ Edite o arquivo `vim /etc/hosts`
 
 
 
-#### <span style="color:#d86c00">Configurando WIFI - Caso tenha um adaptador WIFI</span>
+#### Configurando WIFI - Caso tenha um adaptador WIFI
 
 Vamos instalar os pacotes necessários para configurar o WIFI:
 
@@ -468,7 +468,7 @@ pacman -S wireless_tools wpa_supplicant wpa_actiond dialog
 
 
 
-#### <span style="color:#d86c00">Configurar senha do ROOT</span>
+#### Configurar senha do ROOT
 
 Use o comando abaixo para trocar a senha do root, coloque uma senha forte.
 
@@ -479,7 +479,7 @@ passwd
 
 
 
-#### <span style="color:#d86c00">Instalando a multilib</span>
+#### Instalando a multilib
 
 A multilib é um pacote que cria uma compatibilidade de pacote que tem arquitetura x86 num sistema x64, para configurar ela, execute o comando abaixo:
 
@@ -498,7 +498,7 @@ Agora atualize o sistema com o comando `pacman -Syu` e `pacman -Syy`.
 
 
 
-#### <span style="color:#d86c00">Instalando o GRUB</span>
+#### Instalando o GRUB
 
 Para ter dual-boot precisamos instalar um pacote a mais, sendo ele o `os-prober`.
 
@@ -513,7 +513,7 @@ pacman -S os-prober
 
 
 
-#### <span style="color:#d86c00">Configurando o GRUB</span>
+#### Configurando o GRUB
 
 Para aplicar o `grub` na nossa distro rode o comando abaixo:
 
@@ -528,7 +528,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 
 
-#### <span style="color:#d86c00">ACPI/ACPID para NOTEBOOKS</span>
+#### ACPI/ACPID para NOTEBOOKS
 
 Caso esteja usando um notebook, instale os pacotes `acpi` e `acpid` para controle da bateria do notebook.
 
@@ -539,19 +539,19 @@ pacman -S acpi acpid
 
 
 
-#### <span style="color:#d86c00">Mudando a raiz do sistema</span>
+#### Mudando a raiz do sistema
 
 Aperte `Ctrl + d` para sair da raiz do nosso sistema.
 
 
 
-#### <span style="color:#d86c00">Desmontando nosso Sistema</span>
+#### Desmontando nosso Sistema
 
 No terminal digite `umount -R /mnt` para desmontar tudo daquele diretório.
 
 
 
-#### <span style="color:#d86c00">Reiniciando a máquina</span>
+#### Reiniciando a máquina
 
 Use o comando `reboot` para reinicializar a máquina e remova a imagem bootavel do Arch.
 
