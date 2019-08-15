@@ -59,7 +59,7 @@ Vale lembrar que o tipo de partição acima é apenas uma tag para facilitar que
 
 Meu HD não possui nenhuma tabela de partição, portanto precisamos criar uma, caso o seu HD já tenha, certifique-se de que a tabela de partição seja do tipo GPT.
 
-<span style="color:red">Esse procedimento irá destruir todos os dados de seu HD, recomendo que você faça backup do HD.
+Esse procedimento irá destruir todos os dados de seu HD, recomendo que você faça backup do HD.
 
 
 
