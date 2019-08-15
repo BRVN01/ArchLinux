@@ -24,7 +24,7 @@
 	- [ACPI/ACPID para NOTEBOOKS](#ACPI/ACPID_para_NOTEBOOKS)
 	- [Saindo do nosso sistema](#Saido_do_nosso_sistema)
 - [Desmontando nosso Sistema](#Desmontando_nosso_Sistema)
-- [Reiniciando a máquina](#Reiniciando a máquina)
+- [Reiniciando a máquina](#Reiniciando_a_máquina)
 
 
 #### Introdução
