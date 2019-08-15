@@ -1,4 +1,4 @@
-# **Arch Linux Installation Guide - BIOS/GPT Mode**
+# **Arch Linux Installation Guide - UEFI/GPT Mode**
 
 
 #### Introdução
