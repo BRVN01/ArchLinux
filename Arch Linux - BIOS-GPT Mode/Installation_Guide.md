@@ -2,7 +2,7 @@
 
 - [Introdução](#Introdução)
 - [O problema do GPT na BIOS](#O problema do GPT na BIOS)
-	- [A solução](#A_solução)
+	- [A solução](#A solução)
 - [Após logar no Arch](#Após logar no Arch)
 - [Particionando o disco](#Particionando o disco)
 - [Criando uma tabela de partição do tipo GPT](#Criando uma tabela de partição do tipo GPT)
@@ -51,7 +51,7 @@ Se você tem dúvidas sobre tabelas GPT e MBR, ou o que é uma tabela de partiç
 
 
 
-#### O problema do GPT na BIOS
+#### O_Problema_do_GPT_na_BIOS
 
 Diferente de uma tabela MBR que foi desenvolvida para trabalhar com BIOS, o GPT foi desenvolvido para trabalhar com UEFI e, por natureza, a BIOS não reconhece o cabeçalho GPT. Por esse motivo, quando uma tabela GPT é criada, o primeiro setor do disco recebe a PMBR (Protective Master Boot Record), criando uma compatibilidade entre BIOS e GPT.
 
