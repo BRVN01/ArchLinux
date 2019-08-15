@@ -1,7 +1,7 @@
 # **Arch Linux Installation Guide - BIOS/GPT Mode**
 
 - [Introdução](#Introdução)
-- [O problema do GPT na BIOS](#O problema do GPT na BIOS)
+- [O problema do GPT na BIOS](#O_Problema_do_GPT_na_BIOS)
 	- [A solução](#A solução)
 - [Após logar no Arch](#Após logar no Arch)
 - [Particionando o disco](#Particionando o disco)
