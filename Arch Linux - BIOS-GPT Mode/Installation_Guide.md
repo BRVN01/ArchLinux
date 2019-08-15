@@ -2,7 +2,7 @@
 
 - [Introdução](#Introdução)
 - [O problema do GPT na BIOS](#O problema do GPT na BIOS)
-	- [solução](#A solução)
+	- [solução](#A_solução)
 - [Após logar no Arch](#Após logar no Arch)
 - [Particionando o disco](#Particionando o disco)
 - [Criando uma tabela de partição do tipo GPT](#Criando uma tabela de partição do tipo GPT)
