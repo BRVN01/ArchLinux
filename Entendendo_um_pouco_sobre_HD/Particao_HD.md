@@ -1,10 +1,10 @@
-#### <span style="color:#d86c00">Instrodução</span>
+#### Instrodução
 
 Este documento tem como requisito esclarecer a diferença entre Tabela de partição e Tipos de Partições, explicando também os tipos de tabelas/partições mais usadas ultimamente e o que difere entre a DOS/MBR da GPT.
 
 
 
-#### <span style="color:#d86c00">Tabela de Partição</span>
+#### Tabela de Partição
 
 Uma tabela de partição é uma tabela mantida no disco que descreve as partições daquele disco e que será usada pelo Sistema Operacional, essa tabela contém algumas informações úteis sobre a partição, incluindo seu `tipo`, `inodes`, `tempo de montagem`, `quantidade de montagens` entre outras informações.
 
@@ -12,7 +12,7 @@ Dependendo da tabela de partição, você fica limitado há um certo número de 
 
 
 
-#### <span style="color:#d86c00">Como funciona a tabela</span>
+#### Como funciona a tabela
 
 Um disco para funcionar de "modo normal" deve ter uma tabela criada, isso é obrigatório para que o Sistema Operacional reconheça os dados dentro dessa tabela, existem aplicações onde o disco não tem uma tabela, e apenas uma aplicação específica consegue ler os dados, para o Sistema Operacional, um disco sem tabela é um disco vazio, sem dados, esse é o modo como o S.O enxerga, porém, podem ter dados sim dentro do disco.
 
@@ -26,7 +26,7 @@ Um passatempo divertido que você pode fazer é ver como tudo isso funciona na p
 
 
 
-#### <span style="color:#d86c00">Tabela MBR</span>
+#### Tabela MBR
 
 Os HDs precisam ser particionados por diversos motivos, e mesmo que não precisem, quando você formata um HD, é criado uma única partição (sda1) contendo todo o armazenamento do HD naquela partição, caso tenha duas partições (sda1 e sda2) você fez o que chamamos de particionamento de HD, ou seja, você dividiu ele em partes. 
 
@@ -61,7 +61,7 @@ A nomenclatura mudou porque criamos uma partição dentro de outra partição e 
 
 
 
-#### <span style="color:#d86c00">Tabela GPT</span>
+#### Tabela GPT
 
 Apesar do GPT substituir o MBR, o primeiro setor do disco fica reservado para uma pequena tabela MBR, denominada **Protective Master Boot Record**, sua única função é mera compatibilidade de software e não é usada, o processo de inicialização de um disco GPT é identico ao disco MBR, isso graças ao cabeçalho **Protective Master Boot Record** que é encontrado no primeiro setor do disco. Com um disco GPT, você pode ver essa informação usando o comando `gdisk` (Interactive GUID partition table (GPT) manipulator).
 
@@ -106,7 +106,7 @@ Device         Start      End Sectors Size Type
 
 
 
-#### <span style="color:#d86c00">Diferenças entre as tabelas</span>
+#### Diferenças entre as tabelas
 
 ##### Master Boot Record (MBR/DOS)
 
@@ -120,7 +120,7 @@ Aqui temos um aumento significativo no limite de partições primárias, podendo
 
 
 
-#### <span style="color:#d86c00">Tipo de Partição</span>
+#### Tipo de Partição
 
 O tipo de partição é armazenado dentro da tabela de partição criada e define o que a partição representa logicamente, é mais como um identificador daquela partição para nós humanos, o que vai definir mesmo a função daquela partição é os *FS* (File System ou Sistemas de arquivos) da partição. Fiel System é uma maneira de armazenar dados dentro das partições, de uma maneira que seja fácil de gerenciar, ler e gravar dados nela. 
 
