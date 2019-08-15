@@ -10,20 +10,20 @@
 - [Instalação](#Instalação)
 	- [Configurar o sistema](#Configurar_o_sistema)
 	- [Mudando a raiz do sistema](#Mudando_a_raiz_do_sistema)
-	- [Configurando o Relógio](#Configurando o Relógio)
-	- [Instalando o vim](#Instalando o vim)
-	- [Definir idioma no S.O. do Arch](#Definir idioma no S.O. do Arch)
-	- [Tornando o layout do teclado permanente](#Tornando o layout do teclado permanente)
-	- [Configurando nome da máquina](#Configurando nome da máquina)
-	- [Configurando o arquivo HOSTS](#Configurando o arquivo HOSTS)
-	- [Configurando WIFI - Caso tenha um adaptador WIFI](#Configurando WIFI - Caso tenha um adaptador WIFI)
-	- [Configurar senha do ROOT](#Configurar senha do ROOT)
-	- [Instalando a multilib](#Instalando a multilib)
-	- [Instalando o GRUB](#Instalando o GRUB)
-	- [Configurando o GRUB](#Configurando o GRUB)
-	- [ACPI/ACPID para NOTEBOOKS](#ACPI/ACPID para NOTEBOOKS)
-	- [Mudando a raiz do sistema](##Mudando_a_raiz_do_sistema)
-- [Desmontando nosso Sistema](#Desmontando nosso Sistema)
+	- [Configurando o Relógio](#Configurando_o_Relógio)
+	- [Instalando o vim](#Instalando_o_vim)
+	- [Definir idioma no S.O. do Arch](#Definir_idioma_no_S.O_do_Arch)
+	- [Tornando o layout do teclado permanente](#Tornando_o_layout_do_teclado_permanente)
+	- [Configurando nome da máquina](#Configurando_nome_da_máquina)
+	- [Configurando o arquivo HOSTS](#Configurando_o_arquivo_HOSTS)
+	- [Configurando WIFI - Caso tenha um adaptador WIFI](#Configurando_WIFI_Caso_tenha_um_adaptador_WIFI)
+	- [Configurar senha do ROOT](#Configurar_senha_do_ROOT)
+	- [Instalando a multilib](#Instalando_a_multilib)
+	- [Instalando o GRUB](#Instalando_o_GRUB)
+	- [Configurando o GRUB](#Configurando_o_GRUB)
+	- [ACPI/ACPID para NOTEBOOKS](#ACPI/ACPID_para_NOTEBOOKS)
+	- [Saindo do nosso sistema](#Saido_do_nosso_sistema)
+- [Desmontando nosso Sistema](#Desmontando_nosso_Sistema)
 - [Reiniciando a máquina](#Reiniciando a máquina)
 
 
@@ -414,7 +414,7 @@ arch-chroot /mnt /bin/bash
 
 
 
-#### Configurando o Relógio
+#### Configurando_o_Relógio
 
 Para isso temos algumas formas de se fazer, vamos configurar o link simbólico contendo as configurações da nossa localidade:
 
@@ -436,7 +436,7 @@ hwclock --systohc
 
 
 
-#### Instalando o vim
+#### Instalando_o_vim
 
 ```bash
 pacman -Syy vim
@@ -446,7 +446,7 @@ pacman -Syy vim
 
 
 
-#### Definir idioma no S.O. do Arch
+#### Definir_idioma_no_S.O_do_Arch
 
 Edite o arquivo abaixo para escolher o idioma do sistema, no nosso caso, o idioma Português Brasileiro:
 
@@ -472,7 +472,7 @@ echo "LANG=pt_BR.UTF-8" > /etc/locale.conf
 
 
 
-#### Tornando o layout do teclado permanente
+#### Tornando_o_layout_do_teclado_permanente
 
 ```bash
 echo "KEYMAP=br-abnt2" > /etc/vconsole.conf
@@ -482,13 +482,13 @@ echo "KEYMAP=br-abnt2" > /etc/vconsole.conf
 
 
 
-#### Configurando nome da máquina
+#### Configurando_nome_da_máquina
 
 Edite o arquivo `echo "NomeDaMaquina" > /etc/hostname` adicionando o nome escolhido.
 
 
 
-#### Configurando o arquivo HOSTS
+#### Configurando_o_arquivo_HOSTS
 
 Edite o arquivo `vim /etc/hosts` 
 
@@ -502,7 +502,7 @@ Edite o arquivo `vim /etc/hosts`
 
 
 
-#### Configurando WIFI - Caso tenha um adaptador WIFI
+#### Configurando_WIFI_Caso_tenha_um_adaptador_WIFI
 
 Vamos instalar os pacotes necessários para configurar o WIFI:
 
@@ -514,7 +514,7 @@ pacman -S wireless_tools wpa_supplicant wpa_actiond dialog
 
 
 
-#### Configurar senha do ROOT
+#### Configurar_senha_do_ROOT
 
 Use o comando abaixo para trocar a senha do root, coloque uma senha forte.
 
@@ -526,7 +526,7 @@ passwd
 
 
 
-#### Instalando a multilib
+#### Instalando_a_multilib
 
 A multilib é um pacote que cria uma compatibilidade de pacote que tem arquitetura x86 num sistema x64, para configurar ela, execute o comando abaixo:
 
@@ -546,7 +546,7 @@ Agora atualize o sistema com o comando `pacman -Syu` e `pacman -Syy`.
 
 
 
-#### Instalando o GRUB
+#### Instalando_o_GRUB
 
 Para ter dual-boot precisamos instalar um pacote a mais, sendo ele o `os-prober`.
 
@@ -562,7 +562,7 @@ pacman -S os-prober
 
 
 
-#### Configurando o GRUB
+#### Configurando_o_GRUB
 
 Para aplicar o `grub` na nossa distro rode o comando abaixo:
 
@@ -578,7 +578,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 
 
-#### ACPI/ACPID para NOTEBOOKS
+#### ACPI/ACPID_para_NOTEBOOKS
 
 Caso esteja usando um notebook, instale os pacotes `acpi` e `acpid` para controle da bateria do notebook.
 
@@ -590,19 +590,19 @@ pacman -S acpi acpid
 
 
 
-#### Mudando a raiz do sistema
+#### Saido_do_nosso_sistema
 
 Aperte `Ctrl + d` para sair da raiz do nosso sistema.
 
 
 
-#### Desmontando nosso Sistema
+#### Desmontando_nosso_Sistema
 
 No terminal digite `umount -R /mnt` para desmontar tudo daquele diretório.
 
 
 
-#### Reiniciando a máquina
+#### Reiniciando_a_máquina
 
 Use o comando `reboot` para reinicializar a máquina e remova a imagem bootavel do Arch.
 
