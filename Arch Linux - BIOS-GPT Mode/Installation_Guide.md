@@ -182,7 +182,6 @@ Disk /dev/sda: 41 GiB, 44023414784 bytes, 85983232 sectors
 
 # Perceba que o disco tem 41 GiB, temos 5 partições
 # Perceba que o tipo de partição é apenas uma tag.
-
 ```
 
 
@@ -279,7 +278,6 @@ A tabela abaixo representa os códigos suportados pelo `fdisk` para tabelas *GPT
  87 Plan 9 partition               C91818F9-8025-47AF-89D2-F030D7000C2C
  88 HiFive Unleashed FSBL          5B193300-FC78-40CD-8002-E86C45580B47
  89 HiFive Unleashed BBL           2E54B353-1271-4842-806F-E436D6AF6985
-
 ```
 
 
@@ -297,7 +295,6 @@ mkfs.ext4 /dev/sda4
 
 # Formata a quinta partição com o FS ext4 - /
 mkfs.ext4 /dev/sda5
-
 ```
 
 
@@ -306,7 +303,6 @@ Formatar partição swap:
 
 ```bash
 mkswap /dev/sda3
-
 ```
 
 
@@ -315,7 +311,6 @@ Ligar swap:
 
 ```
 swapon /dev/sda3
-
 ```
 
 
@@ -324,7 +319,6 @@ Montar a partição raiz para iniciar o processo de instalação:
 
 ```bash
 mount /dev/sda5 /mnt/
-
 ```
 
 Todas as outras partições devem ser montadas dentro dessa pasta (/mnt/).
@@ -339,7 +333,6 @@ mkdir /mnt/home
 
 # Cria a pasta BOOT
 mkdir /mnt/boot
-
 ```
 
 
@@ -352,7 +345,6 @@ mount /dev/sda4 /mnt/home
 
 # Montando a partição que receberá a pasta BOOT
 mount /dev/sda2 /mnt/boot
-
 ```
 
 
@@ -367,8 +359,6 @@ pacstrap /mnt base base-devel
 # base = Base do linux que será instalado.
 
 # base-devel = Programas mais voltado para desenvolvedores, aqui temos compiladores, compactadores, bibliotecas do GNU e alguns programas como: sed, grep, sudo, systemd entre outros pacotes.
-
-
 ```
 
 Esse grupo não inclui todas as ferramentas da instalação *live*, tal como [btrfs-progs](https://www.archlinux.org/packages/?name=btrfs-progs) ou firmware de rede sem fio específico.
@@ -384,8 +374,6 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
 
 # -p = Excluir montagens do pseudofs (comportamento padrão)
 # -U = Define as partições/discos por seus UUID e não por Label (Nomes).
-
-
 ```
 
 
@@ -408,8 +396,6 @@ Para isso digite o comando abaixo:
 arch-chroot /mnt /bin/bash
 
 # /bin/bash informa qual shell queremos usar ao trocar a raiz.
-
-
 ```
 
 
@@ -420,8 +406,6 @@ Para isso temos algumas formas de se fazer, vamos configurar o link simbólico c
 
 ```bash
 ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
-
-
 ```
 
 
@@ -430,8 +414,6 @@ Agora vamos atualizar a hora da BIOS para que ela tenha o mesmo horário que nos
 
 ```bash
 hwclock --systohc
-
-
 ```
 
 
@@ -440,8 +422,6 @@ hwclock --systohc
 
 ```bash
 pacman -Syy vim
-
-
 ```
 
 
@@ -454,8 +434,6 @@ Edite o arquivo abaixo para escolher o idioma do sistema, no nosso caso, o idiom
 sed -i 's/#pt_BR.UTF-8 UTF-8/pt_BR.UTF-8 UTF-8/' /etc/locale.gen
 
 # Esse comando descomenta a linha '#pt_BR.UTF-8 UTF-8'
-
-
 ```
 
 Gere as variáveis de localidade usando o comando `locale-gen`.
@@ -466,8 +444,6 @@ Crie o arquivo `locale.conf` dentro de `/etc/` para definir a variável `LANG` a
 
 ```bash
 echo "LANG=pt_BR.UTF-8" > /etc/locale.conf
-
-
 ```
 
 
@@ -476,8 +452,6 @@ echo "LANG=pt_BR.UTF-8" > /etc/locale.conf
 
 ```bash
 echo "KEYMAP=br-abnt2" > /etc/vconsole.conf
-
-
 ```
 
 
@@ -496,8 +470,6 @@ Edite o arquivo `vim /etc/hosts`
 127.0.0.1	localhost.localdomain	localhost
 ::1			localhost.localdomain	localhost
 127.0.1.1	NomeDaMaquina.localdomain	NomeDaMaquina
-
-
 ```
 
 
@@ -508,8 +480,6 @@ Vamos instalar os pacotes necessários para configurar o WIFI:
 
 ```bash
 pacman -S wireless_tools wpa_supplicant wpa_actiond dialog
-
-
 ```
 
 
@@ -520,8 +490,6 @@ Use o comando abaixo para trocar a senha do root, coloque uma senha forte.
 
 ```bash
 passwd
-
-
 ```
 
 
@@ -538,8 +506,6 @@ sed -i '94,95 s/^#//' /etc/pacman.conf
 
 [multilib]
 Include = /etc/pacman.d/mirrorlist
-
-
 ```
 
 Agora atualize o sistema com o comando `pacman -Syu` e `pacman -Syy`.
@@ -556,8 +522,6 @@ pacman -S grub
 
 # Para instalar o os-prober execute o comando abaixo:
 pacman -S os-prober
-
-
 ```
 
 
@@ -572,8 +536,6 @@ grub-install /dev/sda
 
 grub-mkconfig -o /boot/grub/grub.cfg
 # Exportando a configuração do grub para um arquivo que será lido no momento da inicialização.
-
-
 ```
 
 
@@ -584,8 +546,6 @@ Caso esteja usando um notebook, instale os pacotes `acpi` e `acpid` para control
 
 ```bash
 pacman -S acpi acpid
-
-
 ```
 
 
