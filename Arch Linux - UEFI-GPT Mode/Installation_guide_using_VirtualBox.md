@@ -1,9 +1,9 @@
 # **Arch Linux Installation VirtualBox - UEFI/GPT Mode**
 
-[Introdução](#Introdução)
-[Gerenciador de Boot](#Gerenciador_de_Boot)
-[Configurando o Carregador - loader.conf](#Configurando_o_Carregador_loader.conf)
-[Projeto no GitHub](https://github.com/BRVN01/ArchLinux)
+- [Introdução](#Introdução)
+- [Gerenciador de Boot](#Gerenciador_de_Boot)
+- [Configurando o Carregador - loader.conf](#Configurando_o_Carregador_loader.conf)
+- [Projeto no GitHub](https://github.com/BRVN01/ArchLinux)
 
 
 
