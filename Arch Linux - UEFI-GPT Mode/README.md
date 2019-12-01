@@ -38,11 +38,11 @@ A Arch wiki recomenda que seja usada o ID de partição abaixo para discos GPT u
 
 ```
 Partição        Nome							                  ID de partição: Descrição
-NONE            Partição VAZIA					          BIOS boot partition
-/               Raiz do Sistema					         Linux x86-64 root (/) 
-/home			        Diretório de Usuários			     Linux /home 
-/boot ou /efi	  Diretório de Inicialização		 EFI System
-swap			         Diretório de Troca				       Linux swap
+"NONE"          "Partição VAZIA"					        "BIOS boot partition"
+"/"             "Raiz do Sistema"				        "Linux x86-64 root (/)"
+"/home"			      "Diretório de Usuários"			   "Linux /home"
+"/boot ou /efi" "Diretório de Inicialização"	"EFI System"
+"swap"			       "Diretório de Troca"				     "Linux swap"
 
 
 - Códigos:
