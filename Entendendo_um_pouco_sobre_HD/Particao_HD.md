@@ -7,7 +7,6 @@
   - [Limite de partições MBR](#Limite_de_partições_MBR)
 - [Tabela GPT](#Tabela_GPT)
   - [Limite de partições GPT](#Limite_de_partições_GPT)
-- [Limite de partições](#Limite_de_partições)
 - [Diferenças entre as tabelas](#Diferenças_entre_as_tabelas)
   - [Master Boot Record (MBR/DOS)](#Master_Boot_Record_(MBR/DOS))
   - [GUID Partition Table (GPT)](#GUID_Partition_Table_(GPT))
