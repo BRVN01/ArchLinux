@@ -4,7 +4,7 @@
 - [Tabela de Partição](#Tabela_de_Partição)
 - [Como funciona a tabela](#Como_funciona_a_tabela)
 - [Tabela MBR](#Tabela_MBR)
-- [Limite de partições](#Limite_de_partições)
+  - [Limite de partições](#Limite_de_partições)
 - [Tabela GPT](#Tabela_GPT)
 - [Limite de partições](#Limite_de_partições)
 - [Diferenças entre as tabelas](#Diferenças_entre_as_tabelas)
