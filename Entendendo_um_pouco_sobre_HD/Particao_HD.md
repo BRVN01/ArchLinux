@@ -4,8 +4,9 @@
 - [Tabela de Partição](#Tabela_de_Partição)
 - [Como funciona a tabela](#Como_funciona_a_tabela)
 - [Tabela MBR](#Tabela_MBR)
-  - [Limite de partições](#Limite_de_partições)
+  - [Limite de partições MBR](#Limite_de_partições_MBR)
 - [Tabela GPT](#Tabela_GPT)
+  - [Limite de partições GPT](#Limite_de_partições_GPT)
 - [Limite de partições](#Limite_de_partições)
 - [Diferenças entre as tabelas](#Diferenças_entre_as_tabelas)
   - [Master Boot Record (MBR/DOS)](#Master_Boot_Record_(MBR/DOS))
@@ -97,7 +98,7 @@ Além desse pequeno detalhe, um disco com uma tabela GPT contém 2 cópias do ca
 
 
 
-###### Limite_de_partições
+###### Limite_de_partições_GPT
 
 Uma partição foi convertida para GPT tendo uma tabela master como DOS, perceba que a nomenclatura das partições muda um pouco e perceba como posso ter mais de 4 partições primárias.
 
