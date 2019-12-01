@@ -1,10 +1,24 @@
-#### Instrodução
+# **Partições de HD**
+
+- [Introdução](#Introdução)
+- [Tabela de Partição](#Tabela_de_Partição)
+- [Como funciona a tabela](#Como_funciona_a_tabela)
+- [Tabela MBR](#Tabela_MBR)
+- [Limite de partições](#Limite_de_partições)
+- [Tabela GPT](#Tabela_GPT)
+- [Limite de partições](#Limite_de_partições)
+- [Diferenças entre as tabelas](#Diferenças_entre_as_tabelas)
+  - [Master Boot Record (MBR/DOS)](#Master_Boot_Record_(MBR/DOS))
+  - [GUID Partition Table (GPT)](#GUID_Partition_Table_(GPT))
+- [Tipo de Partição](#Tipo_de_Partição)
+
+#### Introdução
 
 Este documento tem como requisito esclarecer a diferença entre Tabela de partição e Tipos de Partições, explicando também os tipos de tabelas/partições mais usadas ultimamente e o que difere entre a DOS/MBR da GPT.
 
 
 
-#### Tabela de Partição
+#### Tabela_de_Partição
 
 Uma tabela de partição é uma tabela mantida no disco que descreve as partições daquele disco e que será usada pelo Sistema Operacional, essa tabela contém algumas informações úteis sobre a partição, incluindo seu `tipo`, `inodes`, `tempo de montagem`, `quantidade de montagens` entre outras informações.
 
@@ -12,7 +26,7 @@ Dependendo da tabela de partição, você fica limitado há um certo número de 
 
 
 
-#### Como funciona a tabela
+#### Como_funciona_a_tabela
 
 Um disco para funcionar de "modo normal" deve ter uma tabela criada, isso é obrigatório para que o Sistema Operacional reconheça os dados dentro dessa tabela, existem aplicações onde o disco não tem uma tabela, e apenas uma aplicação específica consegue ler os dados, para o Sistema Operacional, um disco sem tabela é um disco vazio, sem dados, esse é o modo como o S.O enxerga, porém, podem ter dados sim dentro do disco.
 
@@ -26,7 +40,7 @@ Um passatempo divertido que você pode fazer é ver como tudo isso funciona na p
 
 
 
-#### Tabela MBR
+#### Tabela_MBR
 
 Os HDs precisam ser particionados por diversos motivos, e mesmo que não precisem, quando você formata um HD, é criado uma única partição (sda1) contendo todo o armazenamento do HD naquela partição, caso tenha duas partições (sda1 e sda2) você fez o que chamamos de particionamento de HD, ou seja, você dividiu ele em partes. 
 
@@ -36,7 +50,7 @@ A MBR também conhece todas as partições do disco, isso é muito importante, p
 
 
 
-###### Limite de partições
+###### Limite_de_partições
 
 Ao atingir o limite de partições primárias é retornado um erro `To create more partitions, first replace a primary with an extended partition` (Para criar mais partições, primeiro substitua uma partição primária por uma partição estendida).
 
@@ -61,7 +75,7 @@ A nomenclatura mudou porque criamos uma partição dentro de outra partição e 
 
 
 
-#### Tabela GPT
+#### Tabela_GPT
 
 Apesar do GPT substituir o MBR, o primeiro setor do disco fica reservado para uma pequena tabela MBR, denominada **Protective Master Boot Record**, sua única função é mera compatibilidade de software e não é usada, o processo de inicialização de um disco GPT é identico ao disco MBR, isso graças ao cabeçalho **Protective Master Boot Record** que é encontrado no primeiro setor do disco. Com um disco GPT, você pode ver essa informação usando o comando `gdisk` (Interactive GUID partition table (GPT) manipulator).
 
@@ -83,7 +97,7 @@ Além desse pequeno detalhe, um disco com uma tabela GPT contém 2 cópias do ca
 
 
 
-###### Limite de partições
+###### Limite_de_partições
 
 Uma partição foi convertida para GPT tendo uma tabela master como DOS, perceba que a nomenclatura das partições muda um pouco e perceba como posso ter mais de 4 partições primárias.
 
@@ -106,21 +120,21 @@ Device         Start      End Sectors Size Type
 
 
 
-#### Diferenças entre as tabelas
+#### Diferenças_entre_as_tabelas
 
-##### Master Boot Record (MBR/DOS)
+##### Master_Boot_Record_(MBR/DOS)
 
 Um disco pode dividir-se em até no máximo 4 partições primárias, possui um tamanho máximo de 2TB por disco e toda a informação das partições é guardada em apenas num único local, se a MBR for corrompida, você perde todo o disco (uma nova pode ser feita, mas terá a perda dos dados).
 
 
 
-##### GUID Partition Table (GPT)
+##### GUID_Partition_Table_(GPT)
 
 Aqui temos um aumento significativo no limite de partições primárias, podendo ter até no máximo 128 partições primárias (contra 4 da tabela MRB/DOS), suporte para discos acima dos 2 TB, também temos mecanismos para detecção da dados e partições corrompidas entre outras melhorias.
 
 
 
-#### Tipo de Partição
+#### Tipo_de_Partição
 
 O tipo de partição é armazenado dentro da tabela de partição criada e define o que a partição representa logicamente, é mais como um identificador daquela partição para nós humanos, o que vai definir mesmo a função daquela partição é os *FS* (File System ou Sistemas de arquivos) da partição. Fiel System é uma maneira de armazenar dados dentro das partições, de uma maneira que seja fácil de gerenciar, ler e gravar dados nela. 
 
