@@ -51,7 +51,7 @@ A MBR também conhece todas as partições do disco, isso é muito importante, p
 
 
 
-###### Limite_de_partições
+###### Limite_de_partições_MBR
 
 Ao atingir o limite de partições primárias é retornado um erro `To create more partitions, first replace a primary with an extended partition` (Para criar mais partições, primeiro substitua uma partição primária por uma partição estendida).
 
