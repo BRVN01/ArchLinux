@@ -1,0 +1,378 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>Custom_Arch</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+.md-rawblock-control:not(.md-rawblock-tooltip) { background: rgb(85, 85, 85); color: rgb(255, 255, 255); }
+.md-rawblock-on-edit > .md-rawblock-tooltip, .md-rawblock:hover > .md-rawblock-container, .md-rawblock:hover > .md-rawblock-tooltip { background: rgb(85, 85, 85); color: rgb(255, 255, 255); }
+.cm-s-inner .cm-keyword { color: rgb(187, 127, 195); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(144, 136, 204); }
+.cm-s-inner .cm-number { color: rgb(136, 178, 161); }
+.cm-s-inner .cm-def { color: rgb(127, 127, 255); }
+.cm-s-inner .cm-variable { color: rgb(239, 239, 239); }
+.cm-s-inner .cm-variable-2 { color: rgb(127, 170, 212); }
+.cm-s-inner .cm-variable-3 { color: rgb(127, 195, 170); }
+.cm-s-inner .cm-string { color: rgb(212, 136, 136); }
+.cm-s-inner .cm-property { color: rgb(239, 239, 239); }
+.cm-s-inner .cm-operator { color: rgb(203, 140, 140); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(89, 89, 89); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 170, 127); }
+.cm-s-inner .cm-meta { color: rgb(84, 84, 84); }
+.cm-s-inner .cm-qualifier { color: rgb(84, 84, 84); }
+.cm-s-inner .cm-builtin { color: rgb(153, 127, 212); }
+.cm-s-inner .cm-bracket { color: rgb(204, 204, 187); }
+.cm-s-inner .cm-tag { color: rgb(136, 187, 127); }
+.cm-s-inner .cm-attribute { color: rgb(127, 127, 229); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(127, 127, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(127, 204, 127); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(127, 127, 229); }
+.cm-negative { color: rgb(238, 161, 161); }
+.cm-positive { color: rgb(144, 204, 144); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-error { color: rgb(255, 127, 127); }
+.cm-invalidchar { color: rgb(255, 127, 127); }
+.cm-constant { color: rgb(66, 185, 131); }
+.cm-defined { color: rgb(218, 195, 127); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(127, 255, 127); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 144, 144); }
+:root { --side-bar-bg-color: #343333; --control-text-color: #ffffff; --select-text-bg-color: hsl(153, 47%, 40%); --select-text-font-color: #fff; --bg-color: #1d1d1d; --item-hover-bg-color: #fff; }
+html { font-size: 16px; }
+body { color: rgb(255, 255, 255); background-color: rgb(31, 31, 31); -webkit-font-smoothing: antialiased; line-height: 1.6rem; letter-spacing: 0px; margin: 0px; overflow-x: hidden; font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif !important; }
+#write { max-width: 860px; margin: 0px auto; padding: 20px 30px 100px; }
+#write p { line-height: 1.6rem; word-spacing: 0.05rem; }
+#write ol li { padding-left: 0.5rem; }
+#write > ul:first-child, #write > ol:first-child { margin-top: 30px; }
+body > :first-child { margin-top: 0px !important; }
+body > :last-child { margin-bottom: 0px !important; }
+a { color: rgb(66, 185, 131); font-weight: 600; padding: 0px 2px; text-decoration: none; }
+h1, h2, h3, h4, h5, h6 { position: relative; margin-top: 1rem; margin-bottom: 1rem; font-weight: bold; line-height: 1.4; cursor: text; }
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor { text-decoration: none; }
+h1 tt, h1 code { font-size: inherit; }
+h2 tt, h2 code { font-size: inherit; }
+h3 tt, h3 code { font-size: inherit; }
+h4 tt, h4 code { font-size: inherit; }
+h5 tt, h5 code { font-size: inherit; }
+h6 tt, h6 code { font-size: inherit; }
+h1 { padding-bottom: 0.4rem; font-size: 2.2rem; line-height: 1.3; }
+h2 { font-size: 1.75rem; line-height: 1.225; margin: 35px 0px 15px; padding-bottom: 0.5em; border-bottom: 2px solid rgb(51, 51, 51); }
+h3 { font-size: 1.4rem; line-height: 1.43; margin: 20px 0px 7px; }
+h4 { font-size: 1.2rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 1rem; color: rgb(135, 135, 135); }
+p, blockquote, ul, ol, dl, table { margin: 0.8em 0px; }
+li > ol, li > ul { margin: 0px; }
+hr { height: 2px; padding: 0px; margin: 16px 0px; background-color: rgb(46, 46, 46); border: 0px none; overflow: hidden; box-sizing: content-box; }
+body > h2:first-child { margin-top: 0px; padding-top: 0px; }
+body > h1:first-child { margin-top: 0px; padding-top: 0px; }
+body > h1:first-child + h2 { margin-top: 0px; padding-top: 0px; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child { margin-top: 0px; padding-top: 0px; }
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 { margin-top: 0px; padding-top: 0px; }
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p { margin-top: 0px; }
+li p.first { display: inline-block; }
+ul, ol { padding-left: 30px; }
+ul:first-child, ol:first-child { margin-top: 0px; }
+ul:last-child, ol:last-child { margin-bottom: 0px; }
+blockquote { border-left: 4px solid rgb(66, 185, 131); padding: 10px 0px 10px 15px; color: rgb(255, 255, 255); background-color: rgba(66, 185, 131, 0.1); }
+table { font-size: 0.85rem; padding: 0px; word-break: initial; font-family: Menlo, "Source Sans Pro", Monaco, courier, monospace !important; }
+table tr { border-top: 1px solid rgb(25, 28, 31); margin: 0px; padding: 0px; }
+table tr:nth-child(2n), thead { background-color: rgb(26, 26, 26); }
+table tr th { font-weight: bold; border-top: transparent; border-right: transparent; border-left: transparent; border-image: initial; border-bottom: 0px; text-align: left; margin: 0px; padding: 6px 13px; }
+table tr td { border: 2px solid rgb(29, 29, 29); text-align: left; margin: 0px; padding: 6px 13px; }
+table tr th:first-child, table tr td:first-child { margin-top: 0px; }
+table tr th:last-child, table tr td:last-child { margin-bottom: 0px; }
+#write strong { padding: 0px 1px; }
+#write em { padding: 0px 5px 0px 2px; }
+#write table thead th { background-color: rgb(23, 23, 23); }
+#write .CodeMirror-gutters { border-right: none; }
+#write .md-fences { border: 1px solid rgb(28, 28, 28); -webkit-font-smoothing: initial; line-height: 1.43rem; color: rgb(199, 199, 199); border-radius: 2px; font-weight: bold; font-size: 0.85rem; overflow-wrap: normal; margin: 0.8rem 0px !important; padding: 0.3rem 0rem !important; background-color: rgb(26, 26, 26) !important; font-family: Menlo, "Source Sans Pro", Monaco, courier, monospace !important; }
+#write .CodeMirror-wrap .CodeMirror-code pre { padding-left: 12px; }
+#write code, tt { margin: 0px 2px; padding: 2px 4px; border-radius: 2px; font-weight: bold; font-size: 0.85rem; color: rgb(243, 179, 127); background-color: rgba(0, 0, 0, 0.2); font-family: Menlo, "Source Sans Pro", Monaco, courier, monospace !important; }
+#write .md-footnote { background-color: rgba(0, 0, 0, 0.2); color: rgb(243, 179, 127); }
+#write mark { background-color: rgb(235, 255, 235); border-radius: 2px; padding: 2px 4px; margin: 0px 2px; color: rgb(34, 34, 34); font-weight: 500; }
+#write del { padding: 1px 2px; }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(34, 162, 201); }
+.cm-s-inner .cm-string { color: rgb(34, 162, 201); }
+.md-task-list-item > input { margin-left: -1.3em; }
+@media screen and (min-width: 914px) {
+}
+@media print {
+  html { font-size: 13px; }
+  table, pre { break-inside: avoid; }
+  pre { overflow-wrap: break-word; }
+}
+#write pre.md-meta-block { padding: 1rem; font-size: 85%; line-height: 1.45; background-color: rgb(8, 8, 8); border: 0px; border-radius: 3px; color: rgb(135, 135, 135); margin-top: 0px !important; }
+.mathjax-block > .code-tooltip { bottom: 0.375rem; }
+#write > h3.md-focus::before { left: -1.5625rem; top: 0.375rem; }
+#write > h4.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
+#write > h5.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
+#write > h6.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
+.md-image > .md-meta { border-radius: 3px; font-family: Consolas, "Liberation Mono", Courier, monospace; padding: 2px 0px 0px 4px; font-size: 0.9em; color: inherit; }
+.md-tag { color: inherit; }
+.md-toc { margin-top: 20px; padding-bottom: 20px; }
+.sidebar-tabs { border-bottom: none; }
+#typora-quick-open { border: 1px solid rgb(221, 221, 221); background-color: rgb(248, 248, 248); }
+#typora-quick-open-item { background-color: rgb(5, 5, 5); border-color: rgb(0, 0, 0) rgb(26, 26, 26) rgb(26, 26, 26) rgb(18, 18, 18); border-style: solid; border-width: 1px; }
+#md-notification::before { top: 10px; }
+.on-focus-mode blockquote { border-left-color: rgba(85, 85, 85, 0.12); }
+header, .context-menu, .megamenu-content, footer { font-family: "Segoe UI", Arial, sans-serif; }
+.file-node-content:hover .file-node-icon, .file-node-content:hover .file-node-open-state { visibility: visible; }
+.mac-seamless-mode #typora-sidebar { background-color: var(--side-bar-bg-color); }
+.md-lang { color: rgb(66, 185, 131); }
+.html-for-mac .context-menu { --item-hover-bg-color: hsl(215, 92%, 5%); }
+#typora-sidebar { font-weight: bold; font-family: Helvetica, Arial !important; }
+.file-list-item-summary { font-weight: 400; font-family: Helvetica, Arial !important; }
+.file-list-item { border-bottom: 0.15rem solid rgb(46, 46, 46); }
+.file-list-item.active { background: rgb(38, 38, 38) !important; }
+.file-node-background { height: 29px; }
+#toc-dropmenu { font-weight: bold; background: rgb(46, 46, 46) !important; }
+#toc-content { margin-top: 1rem; margin-bottom: 1rem; }
+#toc-content a:hover { text-decoration: none; }
+.outline-item { transition: color 150ms ease 0s; }
+.outline-item:hover { background-color: rgba(0, 0, 0, 0.5); color: rgb(66, 185, 131); }
+.sidebar-footer { border-top: 2px solid rgb(38, 38, 38) !important; }
+.footer-item:hover, .sidebar-footer-item:hover { background-color: rgba(0, 0, 0, 0.5) !important; }
+.file-tree-node.active > .file-node-background { background-color: rgb(38, 38, 38) !important; }
+.file-node-content:hover { color: rgb(255, 255, 255); }
+html { background: rgb(31, 31, 31) !important; }
+.outline-title-wrapper { display: none; }
+.dropdown-menu .divider { display: none; height: 2px; background-color: rgb(33, 33, 33); }
+.dropdown-menu > li > a { color: rgb(255, 255, 255); }
+.autoComplt-hint { color: rgb(66, 185, 131) !important; }
+.auto-suggest-container { margin-top: 5px; box-shadow: rgba(66, 184, 131, 0.3) 0px 0px 1rem; color: rgb(66, 185, 131) !important; font-family: Menlo, "Source Sans Pro", Monaco, courier, monospace !important; font-weight: bold !important; border-color: rgb(66, 185, 131) !important; border-radius: 8px !important; border-width: 2px !important; overflow: hidden !important; }
+.auto-suggest-container li:hover { color: rgb(255, 255, 255) !important; background-color: rgb(66, 185, 131) !important; }
+.typora-sourceview-on #toggle-sourceview-btn { background-color: rgb(66, 185, 131); }
+.CodeMirror.cm-s-typora-default div.CodeMirror-cursor { border-left: 5px solid rgb(66, 185, 131); }
+.CodeMirror div.CodeMirror-cursor { border-left: 5px solid rgb(66, 185, 131); z-index: 3; }
+
+
+</style>
+</head>
+<body class='typora-export' >
+<div  id='write'  class = 'is-node'><h1><a name="%3Cspan-style=%22color:%23d86c00%22%3E**customizando-o-arch-linux**%3C/span%3E" class="md-header-anchor"></a><span style="color:#d86c00"><strong><span>Customizando o Arch Linux</span></strong></span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content"><span class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#%3Cspan-style=%22color:%23d86c00%22%3E**customizando-o-arch-linux**%3C/span%3E"><strong>Customizando o Arch Linux</strong></a></span><span class="md-toc-item md-toc-h3" data-ref="n3"><a class="md-toc-inner" href="#%3Cspan-style=%22color:%23d86c00%22%3E**introdu%C3%A7%C3%A3o**%3C/span%3E"><strong>Introdução</strong></a></span><span class="md-toc-item md-toc-h3" data-ref="n14"><a class="md-toc-inner" href="#%3Cspan-style=%22color:%23d86c00%22%3E**instala%C3%A7%C3%A3o-de-um-ambiente-gr%C3%A1fico**%3C/span%3E"><strong>Instalação de um ambiente gráfico</strong></a></span><span class="md-toc-item md-toc-h4" data-ref="n26"><a class="md-toc-inner" href="#%3Cspan-style=%22color:%23d86c00%22%3E**instala%C3%A7%C3%A3o-do-gerenciador-de-exibi%C3%A7%C3%A3o**%3C/span%3E"><strong>Instalação do Gerenciador de Exibição</strong></a></span><span class="md-toc-item md-toc-h4" data-ref="n31"><a class="md-toc-inner" href="#%3Cspan-style=%22color:%23d86c00%22%3E**habilitando-o-servi%C3%A7o-para-iniciar-com-o-sistema**%3C/span%3E"><strong>Habilitando o serviço para iniciar com o Sistema</strong></a></span><span class="md-toc-item md-toc-h3" data-ref="n35"><a class="md-toc-inner" href="#%3Cspan-style=%22color:%23d86c00%22%3E**configurando-a-rede**%3C/span%3E"><strong>Configurando a Rede</strong></a></span><span class="md-toc-item md-toc-h3" data-ref="n40"><a class="md-toc-inner" href="#%3Cspan-style=%22color:%23d86c00%22%3E**instalando-o-ssh**%3C/span%3E"><strong>Instalando o SSH</strong></a></span><span class="md-toc-item md-toc-h3" data-ref="n44"><a class="md-toc-inner" href="#%3Cspan-style=%22color:%23d86c00%22%3E**instalando-o-firefox-e-o-flash**%3C/span%3E"><strong>Instalando o Firefox e o Flash</strong></a></span><span class="md-toc-item md-toc-h3" data-ref="n48"><a class="md-toc-inner" href="#%3Cspan-style=%22color:%23d86c00%22%3E**instalando-pacotes-para-impressora**%3C/span%3E"><strong>Instalando pacotes para Impressora</strong></a></span><span class="md-toc-item md-toc-h4" data-ref="n54"><a class="md-toc-inner" href="#%3Cspan-style=%22color:%23d86c00%22%3E**habilitando-o-servi%C3%A7o-para-iniciar-com-o-sistema**%3C/span%3E"><strong>Habilitando o serviço para iniciar com o Sistema</strong></a></span><span class="md-toc-item md-toc-h3" data-ref="n57"><a class="md-toc-inner" href="#%3Cspan-style=%22color:%23d86c00%22%3E**instalando-o-libreoffice**%3C/span%3E"><strong>Instalando o LibreOffice</strong></a></span><span class="md-toc-item md-toc-h3" data-ref="n61"><a class="md-toc-inner" href="#%3Cspan-style=%22color:%23d86c00%22%3E**instalando-um-leitor-de-pdf**%3C/span%3E"><strong>Instalando um leitor de PDF</strong></a></span><span class="md-toc-item md-toc-h3" data-ref="n67"><a class="md-toc-inner" href="#%3Cspan-style=%22color:%23d86c00%22%3E**instalando-o-google-chrome**%3C/span%3E"><strong>Instalando o Google-Chrome</strong></a></span><span class="md-toc-item md-toc-h3" data-ref="n70"><a class="md-toc-inner" href="#%3Cspan-style=%22color:%23d86c00%22%3E**instalando-o-typora**%3C/span%3E"><strong>Instalando o Typora</strong></a></span><span class="md-toc-item md-toc-h3" data-ref="n73"><a class="md-toc-inner" href="#%3Cspan-style=%22color:%23d86c00%22%3E**instalando-codecs-de-audio**%3C/span%3E"><strong>Instalando Codecs de audio</strong></a></span><span class="md-toc-item md-toc-h3" data-ref="n79"><a class="md-toc-inner" href="#%3Cspan-style=%22color:%23d86c00%22%3E**instalando-o-mtp,-nfs-e-smb**%3C/span%3E"><strong>Instalando o MTP, NFS e SMB</strong></a></span></p></div><h3><a name="%3Cspan-style=%22color:%23d86c00%22%3E**introdu%C3%A7%C3%A3o**%3C/span%3E" class="md-header-anchor"></a><span style="color:#d86c00"><strong><span>Introdução</span></strong></span></h3><p><span>Após a instalação do Arch, devemos fazer a instalação de alguns pacotes para que o sistema funcione mais redondo, isso porque o Arch tem o propósito de ser um sistema enxuto, é de responsabilidade do usuário que usa o sistema instalar somente o que ele precisa e nada a mais.</span></p><p><span>Vale ressaltar que as instalações feitas não irão respeitar isso, pois, na instalação de um pacote, muitas recomendações serão instaladas juntas, essas recomendações são chamadas de </span><strong><span>Recommends</span></strong><span>, descrito no </span><a href='https://www.debian.org/doc/manuals/maint-guide/dreq.en.html#control'><span>Chapter 4. Required files under the debian directory</span></a><span>, essa recomendação são pacotes que geralmente são instalados juntos com nosso pacote principal e suas dependências, mas você pode alterar esse comportamento e instalar somente o essencial.</span></p><p>&nbsp;</p><p><span>Exmeplos de Recomendações num pacote:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">:: There are 38 members in group xfce4-goodies:</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">:: Repository extra</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">1) mousepad<span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>2) orage <span class="cm-tab" role="presentation" cm-text="	">   </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>3) ristretto &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">4) thunar-archive-plugin  <span class="cm-tab" role="presentation" cm-text="	">  </span>5) thunar-media-tags-plugin  <span class="cm-tab" role="presentation" cm-text="	">   </span>6) xfburn &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">7) xfce4-artwork <span class="cm-tab" role="presentation" cm-text="	">   </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>8) xfce4-battery-plugin <span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>9) xfce4-clipman-plugin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">10) xfce4-cpufreq-plugin <span class="cm-tab" role="presentation" cm-text="	">   </span>11) xfce4-cpugraph-plugin <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span>12) xfce4-datetime-plugin &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">13) xfce4-dict <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>14) xfce4-diskperf-plugin <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span>15) xfce4-eyes-plugin </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">16) xfce4-fsguard-plugin <span class="cm-tab" role="presentation" cm-text="	">   </span>17) xfce4-genmon-plugin <span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>18) xfce4-mailwatch-plugin </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">19) xfce4-mount-plugin <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">    </span>20) xfce4-mpc-plugin <span class="cm-tab" role="presentation" cm-text="	">   </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>21) xfce4-netload-plugin </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">22) xfce4-notes-plugin <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">    </span>23) xfce4-notifyd <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>24) xfce4-pulseaudio-plugin 25) xfce4-screensaver <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span>26) xfce4-screenshooter <span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>27) xfce4-sensors-plugin </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">28) xfce4-smartbookmark-plugin 29) xfce4-systemload-plugin <span class="cm-tab" role="presentation" cm-text="	"> </span>30) xfce4-taskmanager </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">31) xfce4-time-out-plugin <span class="cm-tab" role="presentation" cm-text="	">  </span>32) xfce4-timer-plugin <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>33) xfce4-verve-plugin </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">34) xfce4-wavelan-plugin <span class="cm-tab" role="presentation" cm-text="	">   </span>35) xfce4-weather-plugin <span class="cm-tab" role="presentation" cm-text="	">   </span><span class="cm-tab" role="presentation" cm-text="	">    </span>36) xfce4-xkb-plugin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">:: Repository community</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">37) parole  38) xfce4-whiskermenu-plugin</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 386px;"></div><div class="CodeMirror-gutters" style="display: none; height: 386px;"></div></div></div></pre><p><span>Esses são os pacotes recomendados do pacote </span><strong><span>xfce4-goodies</span></strong><span>, perceba que eu não preciso de todos os pacotes, como o </span><em><span>xfce4-screensaver</span></em><span> numero 25, eu posso remover esses pacotes ou fazer uma instalação personalizada, alias, essa é uma ação mais que recomendada, dessa forma, você não terá pacotes instalados do qual não vai usar.</span></p><p>&nbsp;</p><p><span>pacman -S whois mtr screen deepin-terminal git wget vim gedit python3 python-pip shotwell --noconfirm</span></p><p>&nbsp;</p><p>&nbsp;</p><h3><a name="%3Cspan-style=%22color:%23d86c00%22%3E**instala%C3%A7%C3%A3o-de-um-ambiente-gr%C3%A1fico**%3C/span%3E" class="md-header-anchor"></a><span style="color:#d86c00"><strong><span>Instalação de um ambiente gráfico</span></strong></span></h3><p><span>	</span><span> </span></p><p><span>ENZOTIB.askubuntu. Disponível em </span><span>&lt;</span><a href='https://askubuntu.com/questions/7881/what-is-the-x-server' target='_blank' class='url'>https://askubuntu.com/questions/7881/what-is-the-x-server</a><span>&gt;. Acesso em 20 ago.  2019.</span></p><blockquote><p><span>X é um aplicativo que gerencia uma ou mais exibições gráficas e um ou mais dispositivos de entrada (teclado, mouse, etc.) conectados ao computador.</span></p><p><span>Ele funciona como um servidor e pode ser executado no computador local ou em outro computador na rede. Os serviços podem se comunicar com o servidor X para exibir interfaces gráficas e receber informações do usuário.</span></p><p><span>Vale a pena notar, um componente comum usado com um servidor X é o Gerenciador de Janelas, um aplicativo que gerencia o redimensionamento e a movimentação de janelas e elementos decorativos de janelas, como barras de título, minimizar e fechar botões.</span></p><p><span>O servidor X pode ser iniciado com o comando &#39;startx&#39;, ou mais comumente, de um gerenciador de exibição, como o gdm.</span></p></blockquote><p>&nbsp;</p><p><span>Para um Ambiente de Trabalho gráfico, nós temos o Xfce, Gnome, KDE, Deepin entre outros, esses são os mais usados, nesse tutorial, vamos utilizar o xfce versão 4.</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">pacman <span class="cm-attribute">-S</span> xorg xfce4 xfce4-goodies <span class="cm-attribute">--noconfirm</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># O xfce4-goodies nos fornece alguns plugins para podermos</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># deixar o ambiente de trabalho mais agradável, </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># como por exemplo: Arte extra, Monitor de nível de bateria, </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Extensão para data e hora, Mini lançadores entre outros.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># O xfce4 é o nosso ambiente de trabalho.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># --noconfirm faz com que ele não peça permissão e aceite tudo.</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 220px;"></div><div class="CodeMirror-gutters" style="display: none; height: 220px;"></div></div></div></pre><p>&nbsp;</p><h4><a name="%3Cspan-style=%22color:%23d86c00%22%3E**instala%C3%A7%C3%A3o-do-gerenciador-de-exibi%C3%A7%C3%A3o**%3C/span%3E" class="md-header-anchor"></a><span style="color:#d86c00"><strong><span>Instalação do Gerenciador de Exibição</span></strong></span></h4><p><span>O gerenciador de exibição é um software que tem como função desenhar uma interface de login sobre o X, ou seja, o X cria uma ambiente gráfico e Display manager (Gerenciador de Exibição) desenha as interfaces de login.</span></p><p><span>Você pode usá-lo sem o Xorg, mas para isso, você deve ter o um login automatico</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">pacman <span class="cm-attribute">-S</span> lightdm lightdm-webkit2-greeter lightdm-gtk-greeter <span class="cm-attribute">--noconfirm</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Lightdm = Gerenciador de Exibição.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># lightdm-gtk-greeter = É uma GUI que solicita ao usuário credenciais, como: nome e senha, permite a troca de sessão, ambiente gráfico a ser usado entre outras coisas, chamamos isso de greeter.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># lightdm-webkit2-greeter = Um greeter que usa Webkit2 para temas. </span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 176px;"></div><div class="CodeMirror-gutters" style="display: none; height: 176px;"></div></div></div></pre><p>&nbsp;</p><h4><a name="%3Cspan-style=%22color:%23d86c00%22%3E**habilitando-o-servi%C3%A7o-para-iniciar-com-o-sistema**%3C/span%3E" class="md-header-anchor"></a><span style="color:#d86c00"><strong><span>Habilitando o serviço para iniciar com o Sistema</span></strong></span></h4><p><span>Após fazer a instalação de certas aplicações, precisamos ativar o serviço na inicialização do sistema, caso contrário, toda vez que o sistema iniciar, precisaremos iniciar esses serviços.</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Reiniciando o serviço:</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">systemctl <span class="cm-builtin">restart</span> lightdm</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Ativando o serviço na inicialização do Sistema:</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">systemctl enable lightdm</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 110px;"></div><div class="CodeMirror-gutters" style="display: none; height: 110px;"></div></div></div></pre><p>&nbsp;</p><h3><a name="%3Cspan-style=%22color:%23d86c00%22%3E**configurando-a-rede**%3C/span%3E" class="md-header-anchor"></a><span style="color:#d86c00"><strong><span>Configurando a Rede</span></strong></span></h3><p><span>pacman -S networkmanager network-manager-applet --noconfirm</span></p><p><span>systemctl start NetworkManager</span></p><p><span>systemctl enable NetworkManager</span></p><p>&nbsp;</p><h3><a name="%3Cspan-style=%22color:%23d86c00%22%3E**instalando-o-ssh**%3C/span%3E" class="md-header-anchor"></a><span style="color:#d86c00"><strong><span>Instalando o SSH</span></strong></span></h3><p><span>Vamos instalar o SSH para podermos nos conectar a nossa máquina caso necessário.</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Instalando o SSH:</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">pacman <span class="cm-attribute">-S</span> openssh <span class="cm-attribute">--noconfirm</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Ativando o serviço do SSH na inicialização:</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">systemctl enable sshd</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 110px;"></div><div class="CodeMirror-gutters" style="display: none; height: 110px;"></div></div></div></pre><p>&nbsp;</p><h3><a name="%3Cspan-style=%22color:%23d86c00%22%3E**instalando-o-firefox-e-o-flash**%3C/span%3E" class="md-header-anchor"></a><span style="color:#d86c00"><strong><span>Instalando o Firefox e o Flash</span></strong></span></h3><p><span>Vamos instalar o Firefox para que possamos navegar na Web, vamos instalar também o plugin do flash.</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Instalando Firefox e o Flash:</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">pacman <span class="cm-attribute">-S</span> firefox flashplugin pepper-flash <span class="cm-attribute">--noconfirm</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># flashplugin = Adobe Flash Player NPAPI</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># pepper-flash = Adobe Flash Player PPAPI</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 132px;"></div><div class="CodeMirror-gutters" style="display: none; height: 132px;"></div></div></div></pre><p>&nbsp;</p><h3><a name="%3Cspan-style=%22color:%23d86c00%22%3E**instalando-pacotes-para-impressora**%3C/span%3E" class="md-header-anchor"></a><span style="color:#d86c00"><strong><span>Instalando pacotes para Impressora</span></strong></span></h3><p><span>Para podermos usar a impressora devemos instalar o </span><a href='https://pt.wikipedia.org/wiki/CUPS'><span>CUPS</span></a><span> (Sistema Comum de Impressão Unix).</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">pacman <span class="cm-attribute">-S</span> cups cups-pdf system-config-printer hplip <span class="cm-attribute">--noconfirm</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># cups = Sistema de Impressão.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># cups-pdf = Impressora PDF</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># system-config-printer = Uma ferramenta de configuração de impressoras </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># e um applet de status do CUPS</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># hplip = Biblioteca de Drivers para impressora HP.</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 220px;"></div><div class="CodeMirror-gutters" style="display: none; height: 220px;"></div></div></div></pre><p><span>Observação: Ao importar uma impressora pela rede usando o parâmetro </span><strong><em><span>ipp://IP</span></em></strong><span> eu tive vários problemas ao imprimir, a impressão tinha caracteres estranhos e ficava imprimindo infinitamente.</span></p><p><span>Esse problema foi corrigido ao importar uma impressora pela rede usando o parâmetro </span><strong><em><span>socket://IP</span></em></strong><span> , por padrão a maioria das distros, ao encontrar a impressora usando o </span><em><span>ipp</span></em><span>, salva como </span><em><span>socket</span></em><span>, mas isso não estava acontecendo.</span></p><p>&nbsp;</p><h4><a name="%3Cspan-style=%22color:%23d86c00%22%3E**habilitando-o-servi%C3%A7o-para-iniciar-com-o-sistema**%3C/span%3E" class="md-header-anchor"></a><span style="color:#d86c00"><strong><span>Habilitando o serviço para iniciar com o Sistema</span></strong></span></h4><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Iniciando o serviço:</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">sudo</span> systemctl <span class="cm-builtin">start</span> org.cups.cupsd </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Ativando o serviço do SSH na inicialização: </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">sudo</span> systemctl enable org.cups.cupsd</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 110px;"></div><div class="CodeMirror-gutters" style="display: none; height: 110px;"></div></div></div></pre><p>&nbsp;</p><h3><a name="%3Cspan-style=%22color:%23d86c00%22%3E**instalando-o-libreoffice**%3C/span%3E" class="md-header-anchor"></a><span style="color:#d86c00"><strong><span>Instalando o LibreOffice</span></strong></span></h3><p><span>Vamos instalar o LibreOffice para que possamos trabalhar com documentos, powerpoint entre outros tipos de documentos.</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">pacman <span class="cm-attribute">-S</span> libreoffice-still libreoffice-still-pt-br <span class="cm-attribute">--noconfirm</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># libreoffice-still = Pacote do LibreOffice.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># libreoffice-still-pt-br = Pacote de idioma Português Brasil.</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 110px;"></div><div class="CodeMirror-gutters" style="display: none; height: 110px;"></div></div></div></pre><p>&nbsp;</p><h3><a name="%3Cspan-style=%22color:%23d86c00%22%3E**instalando-um-leitor-de-pdf**%3C/span%3E" class="md-header-anchor"></a><span style="color:#d86c00"><strong><span>Instalando um leitor de PDF</span></strong></span></h3><p><span>Vamos instalar um leitor de PDF para que possamos ler documentos em PDF.</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">pacman <span class="cm-attribute">-S</span> evince <span class="cm-attribute">--noconfirm</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 22px;"></div><div class="CodeMirror-gutters" style="display: none; height: 22px;"></div></div></div></pre><p>&nbsp;</p><p><span>pacman -S whois mtr screen deepin-terminal git wget vim gedit python3 python-pip --noconfirm</span></p><p>&nbsp;</p><h3><a name="%3Cspan-style=%22color:%23d86c00%22%3E**instalando-o-google-chrome**%3C/span%3E" class="md-header-anchor"></a><span style="color:#d86c00"><strong><span>Instalando o Google-Chrome</span></strong></span></h3><p><span>git clone </span><a href='https://aur.archlinux.org/google-chrome.git' target='_blank' class='url'>https://aur.archlinux.org/google-chrome.git</a>
+<span>cd google-chrome/</span>
+<span>makepkg -si</span></p><p>&nbsp;</p><h3><a name="%3Cspan-style=%22color:%23d86c00%22%3E**instalando-o-typora**%3C/span%3E" class="md-header-anchor"></a><span style="color:#d86c00"><strong><span>Instalando o Typora</span></strong></span></h3><p><span>git clone </span><a href='https://aur.archlinux.org/typora.git' target='_blank' class='url'>https://aur.archlinux.org/typora.git</a>
+<span>cd typora/</span>
+<span>makepkg -si</span></p><p>&nbsp;</p><h3><a name="%3Cspan-style=%22color:%23d86c00%22%3E**instalando-codecs-de-audio**%3C/span%3E" class="md-header-anchor"></a><span style="color:#d86c00"><strong><span>Instalando Codecs de audio</span></strong></span></h3><p><span>sudo pacman -S mplayer --noconfirm # codecs</span></p><p><span>pacman -S pulseaudio-alsa pavucontrol --noconfirm</span></p><p><span>pavucontrol = front-end para controlar o som</span></p><p>&nbsp;</p><p>&nbsp;</p><h3><a name="%3Cspan-style=%22color:%23d86c00%22%3E**instalando-o-mtp,-nfs-e-smb**%3C/span%3E" class="md-header-anchor"></a><span style="color:#d86c00"><strong><span>Instalando o MTP, NFS e SMB</span></strong></span></h3><p><span>extra/gvfs-mtp 1.40.2-1 (gnome)</span>
+<span>Virtual filesystem implementation for GIO (MTP backend; Android, media player)</span></p><p><span>pacman -S gvfs-mtp gvfs-nfs gvfs-smb smb python-pysmbc smbclient</span></p><p><span>pacman -Syy &amp;&amp; pacman -Syu --noconfirm</span></p></div>
+</body>
+</html>
