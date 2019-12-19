@@ -303,6 +303,29 @@ makepkg -si
 
 
 
+### <span style="color:#d86c00">**Instalando o YAY**</span>
+
+<span style="color:#696969">Josephgbr.wiki_archlinux_org. Disponível em \<https://wiki.archlinux.org/index.php/Arch_User_Repository_(Portugu%C3%AAs)>. Acesso em 19 dez.  2019.</span>
+
+> O Arch User Repository (AUR) ou, em português, Repositório de Usuário do Arch é um repositório dirigido pela comunidade para usuários do Arch. Ele contém descrições de pacotes ([PKGBUILDs](https://wiki.archlinux.org/index.php/PKGBUILD_(Português))) que permitem a você compilar um pacote de um fonte com o [makepkg](https://wiki.archlinux.org/index.php/Makepkg_(Português)) e depois instalar via [pacman](https://wiki.archlinux.org/index.php/Pacman_(Português)#Comandos_adicionais). O AUR foi criado para organizar e compartilhar novos pacotes da comunidade e ajudar a acelerar a inclusão dos pacotes populares no [repositório community](https://wiki.archlinux.org/index.php/Repositório_community). Este documento explica como usuários podem acessar e utilizar o AUR. 
+> Um bom número de novos pacotes que entram para os repositórios oficiais iniciam no AUR. No AUR, usuários são capazes de contribuir com seus próprios pacotes (`PKGBUILD` e arquivos relacionados). A comunidade do AUR tem a capacidade de votar a favor os pacotes no AUR. Se um pacote se torna popular o bastante -- desde que tenha uma licença compatível e uma boa técnica de empacotamento -- ele pode ser colocado no repositório *community* (diretamente acessível pelo *pacman* ou [abs](https://wiki.archlinux.org/index.php/Abs_(Português))).
+
+
+
+<span style="color:#696969">Vamos utilizar o yay para poder instalar dependências e pacotes que estejam no AUR.</span>
+
+```bash
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
+# Para instalar pacotes sem ter que ficar vendo o código fonte, podemos usar a opção '--nodiffmenu'.
+# Exemplo de instalação:
+yay -S shutter --nodiffmenu
+```
+
+
+
 ### <span style="color:#d86c00">**Instalando Codecs de audio**</span>
 
 <span style="color:#696969">Vamos instalar o servidor de som, codecs de audio e o front-ent para controlarmos o som.</span>
